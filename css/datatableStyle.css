@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,700;1,400&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    color:#0000;
+    font-family: 'Poppins', sans-serif;
+    background-color:#c7bc92;
+    opacity: 0.9;
+    background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 10px ), repeating-linear-gradient( #b6a8c655, #8991bd );
+    min-height: 100vh;
+}
+
+:root{
+    --primary_color: white;
+    --secondary_color: #526474;
+    --highlight_color: #e69b1b;
+
+    --dt_padding: 12px;
+    --dt_padding_s: 6px;
+    --dt_padding_xs: 2px;
+
+    --dt_border_radius: 3px;
+
+    --dt_backgound_color_container: #36333D;
+    --dt_border_color:var(--primary_color);
+    --dt_bg_color:var(--highlight_color);
+    --dt_text_color:var(--primary_color);
+    --dt_bg_active_button:var(--highlight_color);
+    --dt_text_color_button:var(--primary_color);
+    --dt_text_color_active_button:var(--primary_color);
+    --dt_hover_cell_color:var(--highlight_color);
+    --dt_even_row_color:var(--secondary_color);
+    --dt_focus_color:var(--highlight_color);
+    --dt_input_backgound_color:var(--primary_color);
+    --dt_input_color:var(--primary_color);
+}
+
+.material_icons{
+    font-size: 16px;
+}
+
+.table_title{
+    font-size: 1.8rem;
+    margin-left: 360px;
+}
+
+.datatable-container{
+    width: 90%;
+    margin-top: 100px;
+    margin-left: 200px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px -5px rgba(15, 3, 53, 0.87);
+    background-color: var(--dt_backgound_color_container);
+    color: var(--dt_text_color);
+    width: 1000px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+
+.datatable-container .header-tools{
+    border-bottom: solid 3px var(--dt_border_color);
+    padding:var(--dt_padding);
+    display: flex;
+    align-items: baseline;
+}
+.datatable-container .header-tools .search{
+    width: 26%;
+}
+.datatable-container .header-tools .search .search-input{
+    width: 100%;
+    background-color:var(--dt_input_backgound_color);
+    box-sizing : border-box;
+    border-radius: var(--dt_border_radius);
+}
+
+.datatable-container .header-tools .tools{
+    margin-left: 20px;
+    width: 69%;
+    justify-content: start;
+    margin: 5px;
+}
+.datatable-container .header-tools .tools ul{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: start;
+    align-items: baseline;
+}
+.datatable-container .header-tools .tools ul li{
+    display: inline-block;
+    margin: 0 var(--dt_padding_xs);
+    align-items: baseline;
+}
+
+.datatable-container .header-tools .tools ul li span input{
+    display: block;
+}
+
+.datatable-container .header-tools .tools ul li button{
+    font-family: 'Poppins', sans-serif;
+    color:var(--dt_text_color_button);
+    border: 5;
+    border-radius:10px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.datatable-container .header-tools .tools ul li button:hover{
+    background:var(--dt_bg_active_button);
+    color:var(--dt_text_color_active_button);
+}
+
+.datatable-container .footer_tools{
+    padding:var(--dt_padding);
+    display: flex;
+    align-items: baseline;
+}
+
+.datatable-container .footer_tools .list_items{
+    width: 50%;
+}
+
+.datatable-container .footer_tools .pages{
+    margin-left: auto;
+    margin-right: 0;
+    width: 30%;
+}
+
+.datatable-container.footer_tools .pages ul{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+}
+
+.datatable-container .footer_tools .pages ul li{
+    display: inline-block;
+    margin: 0 var(--dt_padding_xs);
+}
+
+.datatable-container .footer_tools .pages ul li button,
+.datatable-container .footer_tools .tools ul li button{
+    font-family: 'Poppins', sans-serif;
+    color:var(--dt_text_color_button);
+    width: 100%;
+    box-sizing: border-box;
+    border: 0;
+    border-radius:var(--dt_border_radius);
+    background: transparent;
+    cursor: pointer;
+}
+
+.datatable-container .footer_tools .pages ul li button:hover,
+.datatable-container .footer_tools .tools ul li button:hover{
+    background:var(--dt_bg_active_button);
+    color:var(--dt_text_color_active_button);
+}
+
+.datatable-container .footer_tools .pages ul li span.active{
+    background-color:var(--dt_bg_color);
+    border-radius:var(--dt_border_radius);
+}
+
+.datatable-container .footer_tools .pages ul li button,
+.datatable-container .footer_tools .pages ul li span,
+.datatable-container .footer_tools .tools ul li button{
+    padding:var(--dt_padding_s)var(--dt_padding);
+}
+
+.datatable-container .datatable{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.datatable-container .datatable,
+.datatable-container .datatable th,
+.datatable-container .datatable td{
+    padding: var(--dt_padding) var(--dt_padding);
+}
+
+.datatable-container .datatable th{
+    font-weight: bolder;
+    text-align: left;
+    border-bottom: solid 2px var(--dt_border_color);
+}
+
+.datatable-container .datatable td{
+    border-bottom: solid 1px var(--dt_border_color);
+}
+
+.datatable-container .datatable tbody tr:nth-child(even){
+    background-color:var(--dt_even_row_color);
+}
+
+.datatable-container .datatable tbody tr:hover{
+    background-color:var(--dt_hover_cell_color);
+}
