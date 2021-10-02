@@ -2,7 +2,7 @@ package com.proyect.ciclo3.Model;
 
 public class UsuarioDTO{
 
-    private Integer cedulaUsuario;
+    private long cedulaUsuario;
     private String emailUsuario;
     private String nombreUsuario;
     private String password;
@@ -10,7 +10,7 @@ public class UsuarioDTO{
     	
     
 
-	public UsuarioDTO(Integer cedulaUsuario, String emailUsuario, String nombreUsuario, String password,
+	public UsuarioDTO(long cedulaUsuario, String emailUsuario, String nombreUsuario, String password,
 			String usuario) {
 		super();
 		this.cedulaUsuario = cedulaUsuario;
@@ -26,11 +26,11 @@ public class UsuarioDTO{
 	
 	
 
-	public Integer getCedulaUsuario() {
+	public long getCedulaUsuario() {
         return cedulaUsuario;
     }
 
-    public void setCedulaUsuario(Integer cedulaUsuario) {
+    public void setCedulaUsuario(long cedulaUsuario) {
         this.cedulaUsuario = cedulaUsuario;
     }
 

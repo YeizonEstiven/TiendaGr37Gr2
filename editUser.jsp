@@ -1,3 +1,5 @@
+<%@page import="com.proyect.ciclo3.Model.UsuarioDTO"%>
+<%@page import="com.proyect.ciclo3.Model.UsuarioDAO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -7,17 +9,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agregar Usuario(s)</title>
+    <title>Editar Usuario(s)</title>
     <link rel="stylesheet" type="text/css" href="css/formStyles.css">
     
 </head>
 <body>
 <jsp:include page="Menu.jsp"></jsp:include>
- <form class="form" action="/ciclo3/agregarUsuario">
-        <h2 class="form_title">Crea tu cuenta de Usuario</h2>
+
+ <form class="form" action="/ciclo3/editarUsuario" method="get">
+        <h2 class="form_title">Editar cuenta de Usuario</h2>
         <div class="form_container">
             <div class="form_group">
-                <input type="text" id="idUser" name="idUser" required class="form_input" pattern="[0-9]+" placeholder=" ">
+                <input type="text" readonly="readonly" id="idUser" name="idUser" value="<%=request.getParameter("cedUser")%>" required class="form_input" placeholder=" ">
                 <label for="idUser" class="form_label">Cédula: </label>
                 <span class="form_line"></span>
             </div>
@@ -42,7 +45,7 @@
                 <span class="form_line"></span>
             </div>
             <div class="campos">
-                <input type="submit" class="form_push" value="Agregar">
+                <input type="submit" class="form_push" value="Guardar">
                 <input type="reset" class="form_push" value="Limpiar">
             </div>
         </div>

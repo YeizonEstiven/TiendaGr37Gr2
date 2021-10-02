@@ -50,61 +50,59 @@ public class UsuarioDAO {
 		}
 	}
 	
-	public ArrayList<UsuarioDTO> consultarUsuario(int cedula){
-		ArrayList<UsuarioDTO> miUser= new ArrayList<UsuarioDTO>();
+	public UsuarioDTO consultarUsuario(int cedula){
+		UsuarioDTO usuario = null;
 		Conexion conex= new Conexion();
+		int cedulaU;
+		String emailU;
+		String nameU;
+		String passU;
+		String U;
 		
 		try {
-			PreparedStatement consulta= conex.getConection().prepareStatement("SELECT * FROM usuarios where cedula_usuario = ? ");
-			consulta.setInt(1, cedula);
+			PreparedStatement consulta= conex.getConection().prepareStatement("SELECT * FROM usuarios WHERE cedula_usuario = ? ");
 			ResultSet res= consulta.executeQuery();
-			
 			if (res.next()) {
-				UsuarioDTO usuario= new UsuarioDTO();
-				usuario.setCedulaUsuario(Integer.parseInt(res.getString("cedula_usuario")));
-				usuario.setEmailUsuario(res.getString("email_usuario"));
-				usuario.setNombreUsuario(res.getString("nombre_usuario"));
-				usuario.setPassword(res.getString("password"));
-				usuario.setUsuario(res.getString("usuario"));
-				
-				miUser.add(usuario);
+				cedulaU=Integer.parseInt(res.getString("cedula_usuario"));
+				emailU=res.getString("email_usuario");
+				nameU=res.getString("nombre_usuario");
+				passU=res.getString("password");
+				U=res.getString("usuario");
+				usuario= new UsuarioDTO(cedulaU,emailU,nameU,passU,U);
 			}
 			res.close();
 			consulta.close();
 			conex.desconectar();
-			
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "No se pudo consultar la Persona\n"+e);
+			System.out.println(e.getMessage());
 		}
-		return miUser;
+		
+		return usuario;
 	}
 	
 	public void eliminarUsuario(int cedula) {
 		Conexion conex= new Conexion();
 		try {
-			String query="DELETE FROM usuarios WHERE cedula_usuario=?";
+			String query="DELETE FROM usuarios WHERE cedula_usuario="+cedula;
 			PreparedStatement consulta= conex.getConection().prepareStatement(query);
-			consulta.setInt(1, cedula);
 			consulta.executeUpdate();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
 	
-	public void editarUsuario(int cedula) {
+	public void editarUsuario(UsuarioDTO miUser) {
 		Conexion conex= new Conexion();
-		UsuarioDTO miUser= new UsuarioDTO();
 		try {
 			Statement st= conex.getConection().createStatement();
 			st.executeUpdate("UPDATE usuarios SET email_usuario='"
 					+miUser.getEmailUsuario()+"',nombre_usuario='"+miUser.getNombreUsuario()+"',password='"+miUser.getPassword()+"',usuario='"
-					+miUser.getUsuario()+"'WHERE cedula_usuario='"+miUser.getCedulaUsuario());
-			JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente","Información",JOptionPane.INFORMATION_MESSAGE);
+					+miUser.getUsuario()+"' WHERE cedula_usuario="+miUser.getCedulaUsuario());
+
 			st.close();
 			conex.desconectar();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-			JOptionPane.showMessageDialog(null, "No se modifico la persona");
 		}
 	}
 }
