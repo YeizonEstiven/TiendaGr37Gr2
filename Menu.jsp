@@ -22,19 +22,19 @@
                         <!--<a href="#" class="menu_link">Inicio</a>*/-->
                     </li>
                     <li class="menu_item menu_item--show">
-                        <a href="datatable.jsp" class="menu_link">Usuarios <img src="icons/arrow.svg" class="menu_arrow"></a>
+                        <a href="./listarUsuarios" class="menu_link">Usuarios <img src="icons/arrow.svg" class="menu_arrow"></a>
                         <ul class="menu_nesting">
                             <li class="menu_inside"><!--submenu-->
                                 <a href="addUser.jsp" class="menu_link menu_link--inside">Crear</a>
                             </li>
                             <li class="menu_inside"><!--submenu-->
-                                <a href="datatable.jsp" class="menu_link menu_link--inside">Consultar</a>
+                                <a href="./listarUsuarios" class="menu_link menu_link--inside">Consultar</a>
                             </li>
                             <li class="menu_inside"><!--submenu-->
-                                <a href="#" class="menu_link menu_link--inside">Actualizar</a>
+                                <a href="editUser.jsp" class="menu_link menu_link--inside">Editar</a>
                             </li>
                             <li class="menu_inside"><!--submenu-->
-                                <a href="#" class="menu_link menu_link--inside">Eliminar</a>
+                                <a href="deleteUser.jsp" class="menu_link menu_link--inside">Eliminar</a>
                             </li>
                         </ul>
                     </li>
@@ -43,16 +43,16 @@
                         <a href="#" class="menu_link">Clientes <img src="icons/arrow.svg" class="menu_arrow"></a>
                         <ul class="menu_nesting">
                             <li class="menu_inside"><!--submenu-->
-                                <a href="#" class="menu_link menu_link--inside">Subitem 1</a>
+                                <a href="#" class="menu_link menu_link--inside">Crear</a>
                             </li>
                             <li class="menu_inside"><!--submenu-->
-                                <a href="#" class="menu_link menu_link--inside">Subitem 2</a>
+                                <a href="#" class="menu_link menu_link--inside">Consultar</a>
                             </li>
                             <li class="menu_inside"><!--submenu-->
-                                <a href="#" class="menu_link menu_link--inside">Subitem 3</a>
+                                <a href="#" class="menu_link menu_link--inside">Editar</a>
                             </li>
                             <li class="menu_inside"><!--submenu-->
-                                <a href="#" class="menu_link menu_link--inside">Subitem 4</a>
+                                <a href="#" class="menu_link menu_link--inside">Eliminar</a>
                             </li>
                         </ul>
                     </li>
@@ -61,34 +61,34 @@
                         <a href="#" class="menu_link">Proveedores <img src="icons/arrow.svg" class="menu_arrow"></a>
                         <ul class="menu_nesting">
                             <li class="menu_inside"><!--submenu-->
-                                <a href="#" class="menu_link menu_link--inside">Subitem 1</a>
+                                <a href="#" class="menu_link menu_link--inside">Crear</a>
                             </li>
                             <li class="menu_inside"><!--submenu-->
-                                <a href="#" class="menu_link menu_link--inside">Subitem 2</a>
+                                <a href="#" class="menu_link menu_link--inside">Consultar</a>
                             </li>
                             <li class="menu_inside"><!--submenu-->
-                                <a href="#" class="menu_link menu_link--inside">Subitem 3</a>
+                                <a href="#" class="menu_link menu_link--inside">Editar</a>
                             </li>
                             <li class="menu_inside"><!--submenu-->
-                                <a href="#" class="menu_link menu_link--inside">Subitem 4</a>
+                                <a href="#" class="menu_link menu_link--inside">Eliminar</a>
                             </li>
                         </ul>
                     </li>
     
                     <li class="menu_item menu_item--show">
-                        <a href="#" class="menu_link">Productos <img src="icons/arrow.svg" class="menu_arrow"></a>
+                        <a href="./listarPrxoductos" class="menu_link">Productos <img src="icons/arrow.svg" class="menu_arrow"></a>
                         <ul class="menu_nesting">
                             <li class="menu_inside"><!--submenu-->
-                                <a href="#" class="menu_link menu_link--inside">Subitem 1</a>
+                                <a href="addProducto" class="menu_link menu_link--inside">Agregar</a>
                             </li>
                             <li class="menu_inside"><!--submenu-->
-                                <a href="#" class="menu_link menu_link--inside">Subitem 2</a>
+                                <a href="./listarProductos" class="menu_link menu_link--inside">Listar</a>
                             </li>
                             <li class="menu_inside"><!--submenu-->
-                                <a href="#" class="menu_link menu_link--inside">Subitem 3</a>
+                                <a href="editProducto" class="menu_link menu_link--inside">Actualizar</a>
                             </li>
                             <li class="menu_inside"><!--submenu-->
-                                <a href="#" class="menu_link menu_link--inside">Subitem 4</a>
+                                <a href="deleteProducto" class="menu_link menu_link--inside">Eliminar</a>
                             </li>
                         </ul>
                     </li>

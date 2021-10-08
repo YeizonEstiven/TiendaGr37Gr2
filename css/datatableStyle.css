@@ -45,30 +45,34 @@ body{
 }
 
 .table_title{
-    font-size: 1.8rem;
-    margin-left: 360px;
+    font-size: 1.8rem !important;
+    margin-left: 500px !important;
+    font-weight: bold !important;
+    padding-top: 20px;
 }
 
 .datatable-container{
     width: 90%;
-    margin-top: 100px;
-    margin-left: 200px;
+    margin-top: 70px;
+    margin-left: 120px;
+    margin-bottom: 70px;
     border-radius: 10px;
     box-shadow: 0 5px 20px -5px rgba(15, 3, 53, 0.87);
     background-color: var(--dt_backgound_color_container);
     color: var(--dt_text_color);
-    width: 1000px;
+    width: 1300px;
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
 }
 
 .datatable-container .header-tools{
-    border-bottom: solid 3px var(--dt_border_color);
+    border-bottom: solid 1px var(--dt_border_color);
+    margin-bottom: 20px;
     padding:var(--dt_padding);
     display: flex;
     align-items: baseline;
 }
-.datatable-container .header-tools .search{
+/*.datatable-container .header-tools .search{
     width: 26%;
 }
 .datatable-container .header-tools .search .search-input{
@@ -76,7 +80,7 @@ body{
     background-color:var(--dt_input_backgound_color);
     box-sizing : border-box;
     border-radius: var(--dt_border_radius);
-}
+}*/
 
 .datatable-container .header-tools .tools{
     margin-left: 20px;
@@ -104,10 +108,13 @@ body{
 .datatable-container .header-tools .tools ul li button{
     font-family: 'Poppins', sans-serif;
     color:var(--dt_text_color_button);
+    width: 50px;
+    height: 50px;
     border: 5;
-    border-radius:10px;
-    background: transparent;
+    border-radius:100px;
+    background: #6aa38b;
     cursor: pointer;
+    margin-left: 30px;
 }
 
 .datatable-container .header-tools .tools ul li button:hover{
@@ -200,4 +207,31 @@ body{
 
 .datatable-container .datatable tbody tr:hover{
     background-color:var(--dt_hover_cell_color);
+}
+
+#example_wrapper{
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+.page-item.active .page-link {
+    background-color:#526474 !important;
+    border: 1px solid  #e69b1b;
+    color: white !important;
+    font-weight: bold;
+}
+
+.page-link {
+    color: black !important;
+    background-color:#526474;
+}
+
+.page-item.active .page-link:hover {
+    background-color:#e69b1b !important;
+    color: black !important;
+}
+
+.page-item .page-link:hover {
+    background-color:#e69b1b !important;
+    color: black !important;
 }
