@@ -48,14 +48,14 @@ public class ClienteDAO {
 		return clientes;
 	}
 	
-	public ClienteDTO consultarCliente(int cedula) {
+	public ClienteDTO consultarCliente(long cedula) {
 		conex= new Conexion();
 		ClienteDTO cliente= null;
 		try {
 			PreparedStatement consulta= conex.getConection().prepareStatement("SELECT * FROM clientes WHERE cedula_cliente="+cedula);
 			ResultSet rs= consulta.executeQuery();
 			while (rs.next()) {
-				int cedula_cliente= Integer.parseInt(rs.getString("cedula_cliente"));
+				long cedula_cliente= Integer.parseInt(rs.getString("cedula_cliente"));
 				String direccion= rs.getString("direccion_cliente");
 				String email= rs.getString("email_cliente");
 				String nombre_completo= rs.getString("nombre_cliente");

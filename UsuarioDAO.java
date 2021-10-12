@@ -3,9 +3,6 @@ package com.proyect.ciclo3.Model;
 import java.sql.*;
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
-
-
 public class UsuarioDAO {
 	
 	
@@ -29,7 +26,7 @@ public class UsuarioDAO {
 			consulta.close();
 			conex.desconectar();
 		}catch(Exception e) {
-			JOptionPane.showMessageDialog(null, "No se pudo consultar " +e);
+			System.out.println("no se logro la operacion "+e);
 		}
 		return listadoUsuarios;
 	}
@@ -51,32 +48,24 @@ public class UsuarioDAO {
 	}
 	
 	public UsuarioDTO consultarUsuario(int cedula){
-		UsuarioDTO usuario = null;
 		Conexion conex= new Conexion();
-		int cedulaU;
-		String emailU;
-		String nameU;
-		String passU;
-		String U;
-		
+		UsuarioDTO usuario = new UsuarioDTO();
 		try {
-			PreparedStatement consulta= conex.getConection().prepareStatement("SELECT * FROM usuarios WHERE cedula_usuario = ? ");
+			PreparedStatement consulta = conex.getConection().prepareStatement("SELECT * FROM usuarios WHERE cedula_usuario="+cedula+"");
 			ResultSet res= consulta.executeQuery();
-			if (res.next()) {
-				cedulaU=Integer.parseInt(res.getString("cedula_usuario"));
-				emailU=res.getString("email_usuario");
-				nameU=res.getString("nombre_usuario");
-				passU=res.getString("password");
-				U=res.getString("usuario");
-				usuario= new UsuarioDTO(cedulaU,emailU,nameU,passU,U);
+			while (res.next()) {
+				usuario.setCedulaUsuario(cedula);
+				usuario.setEmailUsuario(res.getString("email_usuario"));
+				usuario.setNombreUsuario(res.getString("nombre_usuario"));
+				usuario.setPassword(res.getString("password"));
+				usuario.setUsuario(res.getString("usuario"));
 			}
 			res.close();
 			consulta.close();
 			conex.desconectar();
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			System.out.println("no se logro la operacion");
 		}
-		
 		return usuario;
 	}
 	

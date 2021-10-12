@@ -73,7 +73,13 @@ public class ClienteController {
 		vista.forward(request, response);
 	}
 	
-	/*public void consultarCliente(HttpServletRequest request, HttpServletResponse response) {
-		
-	}*/
+	@RequestMapping(value="/consultarCliente", method= RequestMethod.GET)
+	public void consultarCliente(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		Cdao = new ClienteDAO();
+		long cedula= Long.parseLong(request.getParameter("cedCliente"));
+		ClienteDTO cliente= Cdao.consultarCliente(cedula);
+		request.setAttribute("cliente", cliente);
+		RequestDispatcher vista= request.getRequestDispatcher("editCliente.jsp");
+		vista.forward(request, response);
+	}
 }

@@ -6,7 +6,6 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,11 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.proyect.ciclo3.Model.UsuarioDTO;
 import com.proyect.ciclo3.Model.UsuarioDAO;
 
-
 @RestController
 public class UsuarioController {
 	UsuarioDAO Udao;
-	
 	
 
 	@RequestMapping(value="/agregarUsuario", method=RequestMethod.GET)
@@ -39,11 +36,15 @@ public class UsuarioController {
 		vista.forward(request, response);
 	}
 	
-	/*@RequestMapping("/consultarUsuario")
-	public ArrayList<UsuarioDTO> consultarUsuario(int cedula){
-		UsuarioDAO dao= new UsuarioDAO();
-		return dao.consultarUsuario(cedula);
-	}*/
+	@RequestMapping(value="/consultarUser", method= RequestMethod.GET)
+	public void consultarUsuario(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		Udao = new UsuarioDAO();
+		int cedula= Integer.parseInt(request.getParameter("cedUser"));
+		UsuarioDTO usuario= Udao.consultarUsuario(cedula);
+		request.setAttribute("usuario", usuario);
+		RequestDispatcher vista = request.getRequestDispatcher("editUser.jsp");
+		vista.forward(request, response);
+	}
 	
 	@RequestMapping(value="/listarUsuarios",method=RequestMethod.GET)
 	public void listaUsuarios(HttpServletRequest request,HttpServletResponse response) throws Exception{
@@ -86,6 +87,5 @@ public class UsuarioController {
 		request.setAttribute("mensaje", "el usuario se elimino con exito");
 		RequestDispatcher vista= request.getRequestDispatcher("datatableUser.jsp");
 		vista.forward(request, response);
-		
 	}
 }
