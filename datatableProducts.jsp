@@ -1,49 +1,49 @@
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.proyect.ciclo3.model.UsuarioDAO"%>
-<%@page import="com.proyect.ciclo3.model.UsuarioDTO"%>
+<%@page import="com.proyect.ciclo3.model.ProductosDAO"%>
+<%@page import="com.proyect.ciclo3.model.ProductosDTO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="ISO-8859-1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usuarios</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="css/datatableStyle.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
-    <script type="text/javascript">
-        function enviarForma(destino){
-            if(destino=='adicionar'){
-                document.usuarios.action='addUser.jsp';
-                document.usuarios.submit();
+    <meta charset = "UTF-8">
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <title> Productos </title>
+    <link href = "https://fonts.googleapis.com/icon?family=Material+Icons" rel = "stylesheet">
+    <link rel = "stylesheet" href = "css/datatableStyle.css">
+    <link href = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel = "stylesheet" integrity = "sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel = "stylesheet" href = "https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
+    <script type = "text/javascript">
+        function enviarForma (destino){
+            if (destino == 'adicionar'){
+                document.productos.action = 'addProducto.jsp';
+                document.productos.submit();
             }
-            if(destino=='editar'){
-                if(document.usuarios.cedUser.value!=''){
-                    document.usuarios.action='editUser.jsp';
-                    document.usuarios.submit();
+            if (destino == 'editar'){
+                if (document.productos.codeProducto.value != ''){
+                    document.productos.action = 'editProducto.jsp';
+                    document.productos.submit();
                 }else{
-                    alert('Seleccione un registro para editar');
+                    alert ('Seleccione un registro para editar');
                 }
             }
-            if(destino=='eliminar'){
-                if(document.usuarios.cedUser.value!=''){
-                    document.usuarios.action='deleteUser.jsp';
-                    document.usuarios.submit();
+            if (destino == 'eliminar'){
+                if (document.productos.codeProducto.value != ''){
+                    document.productos.action = 'deleteProducto.jsp';
+                    document.productos.submit();
                 }else{
-                    alert('Seleccione un registro para eliminar')
+                    alert ('Seleccione un registro para eliminar')
                 }
             }
         }
     </script>
 </head>
 <body>
-    <jsp:include page="Menu.jsp"></jsp:include>
+    <jsp:include page = "Menu.jsp"></jsp:include>
     
-    <div class="datatable-container">
+    <div class = "datatable-container">
     <%
         if(request.getAttribute("mensaje")!=null){
     %>
@@ -52,12 +52,12 @@
     <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
 			<div class="toast-header">
 			<img src="..." class="rounded me-2" alt="...">
-			<strong class="me-auto">Usuarios</strong>
+			<strong class="me-auto">Productos</strong>
 			<small>Just now</small>
 			<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
 			</div>
 			<div class="toast-body">
-			Usuario agregado con éxito
+			Producto agregado con &eacute;xito
 			</div>
 			</div>
     <%	
@@ -65,7 +65,7 @@
     %>
     
         <h2 class="table_title">Listado de Productos</h2>
-        <form name="usuarios" action="">
+        <form name="productos" action="">
         <div class="header-tools">
             <div class="tools">
             
@@ -73,6 +73,7 @@
                     <li><button onclick="javascript:enviarForma('adicionar');"><i class="material-icons">add_circle</i></button></li>
                     <li><button onclick="javascript:enviarForma('editar');"><i class="material-icons">edit</i></button></li>
                     <li><button onclick="javascript:enviarForma('eliminar');"><i class="material-icons">delete</i></button></li>
+                    <li><button onclick="javascript:enviarForma('csv');"><i class="material-icons">note_add</i></button></li>
                 </ul>
             </div>
             <!--<div class="search">
@@ -84,11 +85,12 @@
             <thead>
                 <tr>
                     <th></th>
-                    <th>C&eacute;dula</th>
-                    <th>Nombre</th>
-                    <th>Correo Electr&oacute;nico</th>
-                    <th>Usuario</th>
-                    <th>Contrase&ntilde;a</th>
+                    <th>C&oacute;digo</th>
+                    <th>IVA</th>
+                    <th>Nit Proveedor</th>
+                    <th>Nombre Producto</th>
+                    <th>Precio Compra</th>
+                    <th>Precio Venta</th>
                 </tr>
             </thead>
             <tbody>
@@ -99,19 +101,19 @@
 				while(iter.hasNext()){
 					user=iter.next();*/
 					
-				ArrayList<UsuarioDTO> users = (ArrayList<UsuarioDTO>)request.getAttribute("usuarios");
-					if(users != null){
-					for(UsuarioDTO user:users){
-				
+				ArrayList<ProductosDTO> productos = (ArrayList<ProductosDTO>)request.getAttribute("productos");
+					if(productos != null){
+					for(ProductosDTO producto:productos){				
 			%>
                         
                 <tr>
-                    <td class="table_checkbox"><input type="radio" name="cedUser" id="" value="<%=user.getCedulaUsuario() %>"></td>
-                    <td><%=user.getCedulaUsuario() %></td>
-                    <td><%=user.getNombreUsuario() %></td>
-                    <td><%=user.getEmailUsuario() %></td>
-                    <td><%=user.getUsuario() %></td>
-                    <td><%=user.getPassword() %></td>
+                    <td class="table_checkbox"><input type="radio" name="codeProducto" id="" value="<%=producto.getCodeProducto() %>"></td>
+                    <td><%=producto.getCodeProducto()%></td>
+                    <td><%=producto.getIvaProducto()%></td>
+                    <td><%=producto.getNombreProducto()%></td>
+                    <td><%=producto.getNitProveedor()%></td>
+                    <td><%=producto.getPrecioCompra()%></td>
+                    <td><%=producto.getPrecioVenta()%></td>
                 </tr>
                 <%}} %>
             </tbody>
@@ -147,7 +149,7 @@
     <script>
         $(document).ready(function() {    
         $('#example').DataTable({
-        //para cambiar el lenguaje a español
+        //para cambiar el lenguaje a espaï¿½ol
         "language": {
         "lengthMenu": "Mostrar _MENU_ registros",
         "zeroRecords": "No se encontraron resultados",
@@ -157,13 +159,13 @@
         "sSearch": "Buscar:",
         "oPaginate": {
         "sFirst": "Primero",
-        "sLast":"Último",
+        "sLast":"ï¿½ltimo",
         "sNext":"Siguiente",
         "sPrevious": "Anterior"
 		},
 		"sProcessing":"Procesando...",
         }
-    });     
+    });
 });
     </script>
 </body>
