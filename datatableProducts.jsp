@@ -37,6 +37,9 @@
                     alert ('Seleccione un registro para eliminar')
                 }
             }
+            if (destino == 'csv'){
+                new bootstrap.Modal(document.getElementById('csv'), {}).show();
+            }
         }
     </script>
 </head>
@@ -65,15 +68,16 @@
     %>
     
         <h2 class="table_title">Listado de Productos</h2>
-        <form name="productos" action="">
+        <form name="productos" >
         <div class="header-tools">
             <div class="tools">
-            
                 <ul>
                     <li><button onclick="javascript:enviarForma('adicionar');"><i class="material-icons">add_circle</i></button></li>
                     <li><button onclick="javascript:enviarForma('editar');"><i class="material-icons">edit</i></button></li>
                     <li><button onclick="javascript:enviarForma('eliminar');"><i class="material-icons">delete</i></button></li>
-                    <li><button onclick="javascript:enviarForma('csv');"><i class="material-icons">note_add</i></button></li>
+                    <li><button type="button"  data-bs-toggle="modal" data-bs-target="#csv">
+                        <i class="material-icons">note_add</i>
+                    </button></li> 
                 </ul>
             </div>
             <!--<div class="search">
@@ -110,8 +114,8 @@
                     <td class="table_checkbox"><input type="radio" name="codeProducto" id="" value="<%=producto.getCodeProducto() %>"></td>
                     <td><%=producto.getCodeProducto()%></td>
                     <td><%=producto.getIvaProducto()%></td>
-                    <td><%=producto.getNombreProducto()%></td>
                     <td><%=producto.getNitProveedor()%></td>
+                    <td><%=producto.getNombreProducto()%></td>
                     <td><%=producto.getPrecioCompra()%></td>
                     <td><%=producto.getPrecioVenta()%></td>
                 </tr>
@@ -142,6 +146,25 @@
         </div>
     </div>
     
+    <!-- Modal -->
+<div class="modal fade" id="csv" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Cargar archivo CSV</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <input type="file">
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-dark">Cargar</button>
+    </div>
+    </div>
+    </div>
+</div>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
@@ -159,7 +182,7 @@
         "sSearch": "Buscar:",
         "oPaginate": {
         "sFirst": "Primero",
-        "sLast":"�ltimo",
+        "sLast":"&uacute;ltimo",
         "sNext":"Siguiente",
         "sPrevious": "Anterior"
 		},

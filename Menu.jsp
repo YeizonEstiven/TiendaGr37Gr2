@@ -76,19 +76,19 @@
                     </li>
     
                     <li class="menu_item menu_item--show">
-                        <a href="./listarPrxoductos" class="menu_link">Productos <img src="icons/arrow.svg" class="menu_arrow"></a>
+                        <a href="./listarProductos" class="menu_link">Productos <img src="icons/arrow.svg" class="menu_arrow"></a>
                         <ul class="menu_nesting">
                             <li class="menu_inside"><!--submenu-->
-                                <a href="addProducto" class="menu_link menu_link--inside">Agregar</a>
+                                <a href="addProducto.jsp" class="menu_link menu_link--inside">Agregar</a>
                             </li>
                             <li class="menu_inside"><!--submenu-->
                                 <a href="./listarProductos" class="menu_link menu_link--inside">Listar</a>
                             </li>
                             <li class="menu_inside"><!--submenu-->
-                                <a href="editProducto" class="menu_link menu_link--inside">Actualizar</a>
+                                <a href="editProducto.jsp" class="menu_link menu_link--inside">Actualizar</a>
                             </li>
                             <li class="menu_inside"><!--submenu-->
-                                <a href="deleteProducto" class="menu_link menu_link--inside">Eliminar</a>
+                                <a href="deleteProducto.jsp" class="menu_link menu_link--inside">Eliminar</a>
                             </li>
                         </ul>
                     </li>

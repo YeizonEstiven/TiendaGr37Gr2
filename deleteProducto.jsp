@@ -7,18 +7,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eliminar Usuario(s)</title>
+    <title>Eliminar Producto</title>
     <link rel="stylesheet" type="text/css" href="css/formStyles.css">
     
 </head>
 <body>
 <jsp:include page="Menu.jsp"></jsp:include>
- <form class="form" action="./eliminarUsuario">
-        <h2 class="form_title">Ingrese usuario a eliminar:</h2>
+ <form class="form" action="./eliminarProducto">
+        <h2 class="form_title">Ingrese producto a eliminar:</h2>
         <div class="form_container">
             <div class="form_group">
-                <input type="text" id="idUser" name="idUser" required class="form_input" pattern="[0-9]+" value="<%=request.getParameter("cedUser")%>" placeholder=" " >
-                <label for="idUser" class="form_label">C&eacute;dula: </label>
+                <input type="text" id="codeProducto" name="codeProducto" required class="form_input" pattern="[0-9]+" value="<%=request.getParameter("codeProducto")%>" placeholder=" " >
+                <label for="codeProducto" class="form_label">C&oacute;digo: </label>
                 <span class="form_line"></span>
             </div>
             <div class="campos">
