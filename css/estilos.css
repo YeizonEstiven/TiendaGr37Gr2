@@ -38,13 +38,15 @@ body{
 .menu_links{
     height: 100%;
     transition: transform .5s;
-    display: flex;
+    /*display: flex;*/
     margin-bottom: 0;
+    position: relative;
+    z-index: 1;
 }
 
 .menu_item{
     list-style: none;
-    position: relative;
+    
     height: 100%;
     --clip: polygon(0 0, 100% 0, 100% 0, 0 0);/*formas en clippy*/
     --transform: rotate(-90deg);/*para que el arrow gire 90 grados*/
@@ -134,7 +136,7 @@ body{
 
     .menu_links{
         position: fixed;
-        max-width: 250px;
+        max-width: 350px;
         width: 100%;
         top: 70px;
         bottom: 0;
